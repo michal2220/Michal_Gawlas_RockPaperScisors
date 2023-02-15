@@ -1,13 +1,10 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class RockPapersScissorsTestSuite {
-
-    SimpleText text = new SimpleText();
 
     @Test
     public void testingName() {
@@ -17,7 +14,7 @@ public class RockPapersScissorsTestSuite {
 
         //When
         when(inputMock.scanString()).thenReturn("Michal");
-        String expectations = player.whatIsPlayersName(inputMock, text);
+        String expectations = player.whatIsPlayersName(inputMock);
 
         //Then
         assertEquals("Michal", expectations);
@@ -27,11 +24,11 @@ public class RockPapersScissorsTestSuite {
     public void testingGameQuantity() {
         //Given
         Input inputMock = mock(Input.class);
-        Game game = new Game();
+        GamesQuantityReceiver gamesQuantityReceiver = new GamesQuantityReceiver(inputMock);
 
         //When
         when(inputMock.scanInt()).thenReturn(4);
-        int expectations = game.howManyGames(inputMock, text);
+        int expectations = gamesQuantityReceiver.howManyGames();
 
         //Then
         assertEquals(4, expectations);
@@ -42,10 +39,12 @@ public class RockPapersScissorsTestSuite {
         //Given
 
         Input inputMock = mock(Input.class);
-        FinishCondition finishCondition = new FinishCondition(inputMock);
+        GamesQuantityReceiver gamesQuantityReceiver = new GamesQuantityReceiver(inputMock);
+        FinishCondition finishCondition = new FinishCondition(inputMock , gamesQuantityReceiver);
 
         //When
-        when(inputMock.scanString()).thenReturn("n");
+        when(inputMock.getScanLine()).thenReturn("x");
+        when(inputMock.scanString()).thenReturn("y");
         boolean expectations = finishCondition.checkingToContinue();
 
         //Then

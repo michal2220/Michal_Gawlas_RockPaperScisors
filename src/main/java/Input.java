@@ -2,10 +2,15 @@ import java.util.Scanner;
 
 public class Input {
     Scanner scanner = new Scanner(System.in);
+    private  String scanLine;
 
     public String scanString() {
-        String in = scanner.nextLine();
-        return in;
+        scanLine = scanner.nextLine();
+        return scanLine;
+    }
+
+    public String getScanLine() {
+        return scanLine;
     }
 
     public int scanInt() {

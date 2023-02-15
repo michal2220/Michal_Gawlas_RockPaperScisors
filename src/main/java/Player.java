@@ -1,7 +1,6 @@
 public class Player {
 
-    String name;
-
+    private String name;
     private String getName() {
         return name;
     }
@@ -10,11 +9,9 @@ public class Player {
         this.name = name;
     }
 
-    public String whatIsPlayersName(Input input, SimpleText text){
-        text.provideName();
+    public String whatIsPlayersName(Input input) {
+        System.out.println("Please enter Your name");
         setName(input.scanString());
         return getName();
     }
-
-
 }

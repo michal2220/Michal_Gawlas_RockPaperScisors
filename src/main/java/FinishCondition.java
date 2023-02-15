@@ -1,48 +1,56 @@
 public class FinishCondition {
 
+    private int counter = 0;
+    private boolean ending = false;
     private Input input;
+    private GamesQuantityReceiver gamesQuantityReceiver;
 
-    public FinishCondition(Input input) {
+    public FinishCondition(Input input, GamesQuantityReceiver gamesQuantityReceiver) {
         this.input = input;
+        this.gamesQuantityReceiver = gamesQuantityReceiver;
     }
 
-    boolean continuing = false;
-    String ending = null;
+    public void playerEnded(Input input) {
 
-    public void setContinuing(boolean continuing) {
-        this.continuing = continuing;
-    }
-
-    public void setEnding(String ending) {
-        this.ending = ending;
-    }
-
-    public void playerEnded(Input input){
-
-        setEnding(input.scanString());
-        System.out.println(ending);
-
-        if (ending.equals("n")) {
+        if (input.getScanLine().equals("x")) {
             System.out.println("""
-            Are You sure you want to finnish?
-            'y' - yes
-            'n' - no""");
+                    Are You sure you want to finnish?
+                    'y' - yes
+                    'n' - no""");
 
             String makingSure = input.scanString();
 
             if (makingSure.equals("y")) {
-                continuing = false;
+                ending = true;
                 System.out.println("Ending game");
-            } if (makingSure.equals("n")) {
+            }
+            if (makingSure.equals("n")) {
                 System.out.println("Ending game canceled");
-                continuing = true;
+                ending = false;
             }
         }
     }
 
-    public boolean checkingToContinue(){
+    public int countingGames() {
+        counter++;
+        return counter;
+    }
+
+    public void gamesLeftInfo() {
+        System.out.println("Games left: " + (gamesQuantityReceiver.getGamesQuantity() - counter));
+    }
+
+    public boolean quantityEnding(GamesQuantityReceiver gamesQuantityReceiver) {
+        if (gamesQuantityReceiver.getGamesQuantity() == counter) {
+            ending = true;
+        }
+        return ending;
+    }
+
+    public boolean checkingToContinue() {
+        quantityEnding(gamesQuantityReceiver);
         playerEnded(input);
-        return continuing;
+        return ending;
     }
 }
 
