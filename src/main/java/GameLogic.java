@@ -50,36 +50,36 @@ public class GameLogic {
     }
 
     private void winnerChecker(FinishCondition finishCondition) {
-        if (playerMove .equals("Scissors") && computerMove .equals("Scissors")) {
+        if (playerMove.equals("Scissors") && computerMove.equals("Scissors")) {
             System.out.println("TIE");
         }
-        if (playerMove .equals("Rock") && computerMove .equals("Rock")) {
+        if (playerMove.equals("Rock") && computerMove.equals("Rock")) {
             System.out.println("TIE");
         }
-        if (playerMove .equals("Paper") && computerMove .equals("Paper")) {
+        if (playerMove.equals("Paper") && computerMove.equals("Paper")) {
             System.out.println("TIE");
         }
-        if (playerMove .equals("Scissors") && computerMove .equals("Rock")) {
+        if (playerMove.equals("Scissors") && computerMove.equals("Rock")) {
             System.out.println("Computer won");
             winnerList.add("computer");
             finishCondition.countingGames();
         }
-        if (playerMove .equals("Scissors") && computerMove .equals("Paper")) {
+        if (playerMove.equals("Scissors") && computerMove.equals("Paper")) {
             System.out.println("Player won");
             winnerList.add("player");
             finishCondition.countingGames();
         }
-        if (playerMove .equals("Rock") && computerMove .equals("Paper")) {
+        if (playerMove.equals("Rock") && computerMove.equals("Paper")) {
             System.out.println("Computer won");
             winnerList.add("computer");
             finishCondition.countingGames();
         }
-        if (playerMove .equals("Rock") && computerMove .equals("Scissors")) {
+        if (playerMove.equals("Rock") && computerMove.equals("Scissors")) {
             System.out.println("Player won");
             winnerList.add("player");
             finishCondition.countingGames();
         }
-        if (playerMove .equals("Paper") && computerMove .equals("Scissors")) {
+        if (playerMove.equals("Paper") && computerMove.equals("Scissors")) {
             System.out.println("Computer won");
             winnerList.add("computer");
             finishCondition.countingGames();
@@ -96,10 +96,10 @@ public class GameLogic {
         int computerCount = 0;
 
         for (String n : winnerList) {
-            if (n.equals("player")){
+            if (n.equals("player")) {
                 playerCount = playerCount + 1;
             }
-            if (n.equals("computer")){
+            if (n.equals("computer")) {
                 computerCount = computerCount + 1;
             }
         }
@@ -113,6 +113,8 @@ public class GameLogic {
         if (playerCount == computerCount) {
             winner = "tie";
         }
+        System.out.println("Player: " + playerCount + "\n"
+                + "Computer: " + computerCount);
         return winner;
     }
 }

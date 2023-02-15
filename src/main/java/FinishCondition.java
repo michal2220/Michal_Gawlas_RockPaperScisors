@@ -10,7 +10,7 @@ public class FinishCondition {
         this.gamesQuantityReceiver = gamesQuantityReceiver;
     }
 
-    public void playerEnded(Input input) {
+    public boolean playerEnded(Input input) {
 
         if (input.getScanLine().equals("x")) {
             System.out.println("""
@@ -29,6 +29,7 @@ public class FinishCondition {
                 ending = false;
             }
         }
+        return ending;
     }
 
     public int countingGames() {
@@ -49,7 +50,6 @@ public class FinishCondition {
 
     public boolean checkingToContinue() {
         quantityEnding(gamesQuantityReceiver);
-        playerEnded(input);
         return ending;
     }
 }
