@@ -2,15 +2,19 @@ import java.util.Scanner;
 
 public class AgainRunner {
 
-    Scanner scanner = new Scanner(System.in);
     private boolean runAgain = true;
     private String makingSure;
+    private Input scanner;
+
+    public AgainRunner(Input scanner) {
+        this.scanner = scanner;
+    }
 
     public boolean runner() {
-        makingSure = scanner.nextLine();
+        makingSure = scanner.scanString();
         while (!makingSure.equals("x") && !makingSure.equals("n")) {
             System.out.println("Enter x or n");
-            makingSure = scanner.nextLine();
+            makingSure = scanner.scanString();
         }
         if (makingSure.equals("x")) {
             System.out.println("""
@@ -19,7 +23,7 @@ public class AgainRunner {
                     else - no, play again
                     """);
 
-            makingSure = scanner.nextLine();
+            makingSure = scanner.scanString();
 
             if (makingSure.equals("y")) {
                 runAgain = false;

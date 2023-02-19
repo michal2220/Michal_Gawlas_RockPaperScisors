@@ -1,3 +1,5 @@
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,7 +42,7 @@ public class RockPapersScissorsTestSuite {
 
         Input inputMock = mock(Input.class);
         GamesQuantityReceiver gamesQuantityReceiver = new GamesQuantityReceiver(inputMock);
-        FinishCondition finishCondition = new FinishCondition(inputMock , gamesQuantityReceiver);
+        FinishCondition finishCondition = new FinishCondition(inputMock, gamesQuantityReceiver);
 
         //When
         when(inputMock.getScanLine()).thenReturn("x");
@@ -49,5 +51,22 @@ public class RockPapersScissorsTestSuite {
 
         //Then
         assertTrue(expectations);
+    }
+
+    @Nested
+    @DisplayName("Testing againrunner")
+    class AgainRunnerTest {
+        @Test
+        public void testRunningAgain() {
+            //Given
+            Input inputMock = mock(Input.class);
+            AgainRunner againRunner = new AgainRunner(inputMock);
+
+            //When
+            when(inputMock.scanString()).thenReturn("n");
+
+            //Then
+            assertTrue(againRunner.runner());
+        }
     }
 }

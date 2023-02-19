@@ -38,5 +38,4 @@ public class GamePlay {
             System.out.println("Would You like to play again?");
         }
     }
-
 }
