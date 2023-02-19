@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Testing againrunner" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-19T13:13:02" hostname="LAPTOP-T3M3QU09" time="0.443">
+  <properties/>
+  <testcase name="testRunningAgain()" classname="RockPapersScissorsTestSuite$AgainRunnerTest" time="0.443"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
